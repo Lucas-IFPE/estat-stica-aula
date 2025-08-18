@@ -1,12 +1,12 @@
 import yfinance as yf
+
 import plotly.express as px
 
-def plot():
+def plot(ticker: str):
 
     data = yf.download('AAPL', period = 'max', multi_level_index = False) 
-
     df = data.reset_index()[['Date', 'Close']]
 
-    fig = px.line(df, x = 'Date', y = 'Close')
+    fig = px.line(df, x = 'Date', y = 'Close', title = f'Historico de {ticker}')
 
     return fig
